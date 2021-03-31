@@ -113,9 +113,9 @@ $site = $this->konfigurasi_model->listing();
 <div class="container">
 <div class="row">
 <div class="header-top">
-    <ul class="h-contact">
+    <!-- <ul class="h-contact">
         <li><i class="fa fa-map"></i> <?php echo $site->namaweb ?></li>
-    </ul>
+    </ul> -->
     <div class="donate-option">
         <?php if($this->session->userdata('userpeneliti')) { ?>
             <a href="<?php echo base_url('peneliti/dasbor') ?>"><i class="fa fa-dashboard" aria-hidden="true"></i> <?php echo $this->session->userdata('nama_peneliti'); ?></a>
@@ -124,7 +124,7 @@ $site = $this->konfigurasi_model->listing();
             <a href="https://wa.me/<?php echo str_replace('+','',$site->hp) ?>?text=Saya%20tertarik%20untuk%20Menggunakan%20Layanan%20di%20Perusahan%20Anda.%20Apakah%20bisa%20dibantu?"><i class="fa fa-whatsapp" aria-hidden="true"></i><?php echo $site->hp ?></a>
             <a href="tel:<?php echo $site->telepon ?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $site->telepon ?></a>
         <?php } ?>
-            <a href="<?php echo base_url('kontak') ?>"><i class="fa fa-envelope" aria-hidden="true"></i> Kontak</a>
+            <a href="<?php echo base_url('kontak') ?>"><i class="fa fa-envelope" aria-hidden="true"></i> Surat Apps</a>
     </div>
     <!-- .donate-option -->
 </div>

@@ -6,6 +6,7 @@ $nav_download               = $this->nav_model->nav_download();
 $nav_berita                 = $this->nav_model->nav_berita();
 $nav_agenda                 = $this->nav_model->nav_agenda();
 $nav_layanan                = $this->nav_model->nav_layanan();
+$segment1 = $this->uri->segment(1);
 ?>
 <!-- Start Menu -->
 <div class="bg-main-menu menu-scroll">
@@ -28,7 +29,7 @@ $nav_layanan                = $this->nav_model->nav_layanan();
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <!-- home -->
-            <li><a href="<?php echo base_url() ?>" class="active">BERANDA</a></li>
+            <li><a href="<?php echo base_url() ?>" class="<?= $segment1 == 'index' || $segment1 == '' ? ' active' : '' ?>">BERANDA</a></li>
 
             <!-- berita -->
             <li class="dropdown">
@@ -65,7 +66,6 @@ $nav_layanan                = $this->nav_model->nav_layanan();
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GALERI <span class="caret"></span></a>
                 <ul class="dropdown-menu sub-menu">
-                    
                     <li class="sub-active"><a href="<?php echo base_url('galeri'); ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Galeri Foto</a></li>
                     <li class="sub-active"><a href="<?php echo base_url('video'); ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Galeri Video</a></li>                   
                 </ul>
@@ -73,10 +73,10 @@ $nav_layanan                = $this->nav_model->nav_layanan();
             
 
             <!-- DOWNLOAD -->
-            <li><a href="<?php echo base_url('download') ?>">UNDUHAN</a></li>
+            <li><a href="<?php echo base_url('download') ?>" class="<?= $segment1 == 'download'? ' active' : '' ?>">UNDUHAN</a></li>
             
             <!-- kontak  -->
-            <li><a href="<?php echo base_url('kontak') ?>">KONTAK</a></li>
+            <li><a href="<?php echo base_url('kontak') ?>" class="<?= $segment1 == 'kontak'? ' active' : '' ?>">KONTAK</a></li>
         </ul>
         <div class="menu-right-option pull-right">
             
@@ -86,8 +86,8 @@ $nav_layanan                = $this->nav_model->nav_layanan();
                 <i class="fa fa-times second_click" aria-hidden="true" style="display: none;"></i>
             </div>
             <div class="search-box-text">
-                <form action="http://demos.codexcoder.com/labartisan/html/GreenForest/search">
-                    <input type="text" name="search" id="all-search" placeholder="Search Here">
+                <form action="<?= base_url('berita/search') ?>" method="get">
+                    <input type="text" name="s" id="all-search" placeholder="Search Here">
                 </form>
             </div>
         </div>

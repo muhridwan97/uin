@@ -97,7 +97,7 @@ class Berita extends CI_Controller {
 		// Berita dan paginasi
 		$this->load->library('pagination');
 		$config['base_url'] 		= base_url().'berita/search?s='.$keywords.'/index/';
-		$config['total_rows'] 		= count(array($this->berita_model->total_search($keywords)));
+		$config['total_rows'] 		= count($this->berita_model->total_search($keywords));
 		$config['use_page_numbers'] = TRUE;
 		$config['num_links'] 		= 5;
 		$config['uri_segment'] 		= 3;
@@ -111,11 +111,11 @@ class Berita extends CI_Controller {
         $config['last_tag_open'] 	= '<li class="next page">';
         $config['last_tag_close'] 	= '</li>';
 
-        $config['next_link'] 		= 'Selanjutnya &rarr;';
+        $config['next_link'] 		= '&rarr;';
         $config['next_tag_open'] 	= '<li class="next page">';
         $config['next_tag_close'] 	= '</li>';
 
-        $config['prev_link'] 		= '&larr; Sebelumnya';
+        $config['prev_link'] 		= '&larr;';
         $config['prev_tag_open'] 	= '<li class="prev page">';
         $config['prev_tag_close'] 	= '</li>';
 
@@ -126,10 +126,11 @@ class Berita extends CI_Controller {
         $config['num_tag_close'] 	= '</li>';
 		$config['per_page'] 		= 10;
 		$config['first_url'] 		= base_url().'berita/search?s='.$keywords;
+		$config['enable_query_strings'] = true;
+		$config['reuse_query_string'] = true;
 		$this->pagination->initialize($config); 
 		$page 		= ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) * $config['per_page'] : 0;
 		$berita 	= $this->berita_model->search($keywords,$config['per_page'], $page);
-
 		$data = array(	'title'		=> 'Hasil pencarian: '.$keywords,
 						'deskripsi'	=> 'Berita - '.$site->namaweb,
 						'keywords'	=> 'Berita - '.$site->namaweb,
@@ -138,6 +139,7 @@ class Berita extends CI_Controller {
 						'site'		=> $site,
 						'populer'	=> $populer,
 						'isi'		=> 'berita/list');
+		// print_debug($this->uri->segment(2));
 		$this->load->view('layout/wrapper', $data, FALSE);
 	}
 

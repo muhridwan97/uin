@@ -3,11 +3,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Berita_model extends CI_Model {
 
+	protected $table = 'berita';
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->database();
 	}
+
+	/**
+     * Get base query of table.
+     *
+     * @return CI_DB_query_builder
+     */
+    protected function getBaseQuery()
+    {
+        return $this->db->select([$this->table . '.*'])->from($this->table);
+    }
 
 	// Listing data
 	public function listing() {
@@ -373,6 +385,43 @@ class Berita_model extends CI_Model {
 		$this->db->where('id_berita',$data['id_berita']);
 		$this->db->delete('berita',$data);
 	}
+
+	/**
+     * Ser
+     * @param $keyword
+     * @param int $limit
+     * @param bool $withTrashed
+     * @return array
+     */
+    public function search2($keyword, $limit = 10, $withTrashed = false)
+    {
+        $baseQuery = $this->getBaseQuery();
+
+        $baseQuery->group_start();
+
+        foreach ($this->filteredFields as $filteredField) {
+            if ($filteredField == '*') {
+                $fields = $this->db->list_fields($this->table);
+                foreach ($fields as $field) {
+                    $baseQuery->or_like($this->table . '.' . $field, trim($keyword));
+                }
+            } else {
+                $baseQuery->or_like($filteredField, trim($keyword));
+            }
+        }
+
+        $baseQuery->group_end();
+
+        if (!$withTrashed && $this->db->field_exists('is_deleted', $this->table)) {
+            $baseQuery->where($this->table . '.is_deleted', false);
+        }
+
+        if (!empty($limit)) {
+            $baseQuery->limit($limit);
+        }
+
+        return $baseQuery->get()->result_array();
+    }
 }
 
 /* End of file Berita_model.php */

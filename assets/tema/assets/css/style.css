@@ -2512,15 +2512,15 @@ section{
 }
 .header-style-2 .donate-option{
 	float: right;
-	background: #0099cc;
+	background: #000;
 }
 
 .header-style-2 .donate-option a{
-	background: #0099cc;
+	background: #000;
 	padding: 13px 28.5px;
 }
 .header-style-2 .donate-option a:hover{
-	background: #000;
+	background: rgb(39, 224, 79);
 }
 .show-res-logo{
 	display: none;
@@ -2536,10 +2536,10 @@ section{
 }
 .header-style-2 .main-menu .nav>li>a:hover, 
 .header-style-3 .main-menu .nav>li>a:hover{
-	color: #0099cc;
+	color: #5faf1f;
 }
 .header-style-2 .main-menu .nav>li.active a{
-	color: #0099cc;
+	color: #5faf1f;
 }
 .header-style-2 .sub-menu, 
 .header-style-3 .sub-menu,
@@ -2566,7 +2566,7 @@ section{
 }
 .header-style-2 .main-menu .sub-menu li a:hover, 
 .header-style-3 .main-menu .sub-menu li a:hover{
-	background: #0099cc;
+	background: #5faf1f;
 	color: #fff;
 }
 .header-style-2 .navbar-nav li .active, 
@@ -2575,7 +2575,7 @@ section{
 }
 .header-style-2 .sub-active a, 
 .header-style-3 .sub-active a {
-    background: #0099cc;
+    background: #000000;
     color: #fff!important;
 }
 .header-style-2 .cart-icon .fa,
@@ -2971,7 +2971,7 @@ div#filters {
 ==========================================*/
 
 .bg-compaian-video{
-	background: url(../images/home02/bg-video-section.jpg) no-repeat fixed;
+	background: url(../images/home02/lab_agama.jpg) no-repeat fixed;
     background-size: cover;
     background-position: 48% 100%;
 }
