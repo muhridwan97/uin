@@ -20,7 +20,7 @@ class Berita extends CI_Controller {
 		// Berita dan paginasi
 		$this->load->library('pagination');
 		$config['base_url'] 		= base_url().'berita/index/';
-		$config['total_rows'] 		= count(array($this->berita_model->total()));
+		$config['total_rows'] 		= count($this->berita_model->total());
 		$config['use_page_numbers'] = TRUE;
 		$config['num_links'] 		= 5;
 		$config['uri_segment'] 		= 3;
@@ -47,7 +47,7 @@ class Berita extends CI_Controller {
 
         $config['num_tag_open'] 	= '<li class="page">';
         $config['num_tag_close'] 	= '</li>';
-		$config['per_page'] 		= 10;
+		$config['per_page'] 		= 5;
 		$config['first_url'] 		= base_url().'berita/';
 		$this->pagination->initialize($config); 
 		$page 		= ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) * $config['per_page'] : 0;
@@ -159,7 +159,7 @@ class Berita extends CI_Controller {
 		// Berita dan paginasi
 		$this->load->library('pagination');
 		$config['base_url'] 		= base_url().'berita/kategori/'.$slug_kategori.'/index/';
-		$config['total_rows'] 		= count(array($this->berita_model->all_kategori($id_kategori)));
+		$config['total_rows'] 		= count($this->berita_model->all_kategori($id_kategori));
 		$config['use_page_numbers'] = TRUE;
 		$config['num_links'] 		= 5;
 		$config['uri_segment'] 		= 5;
@@ -173,11 +173,11 @@ class Berita extends CI_Controller {
         $config['last_tag_open'] 	= '<li class="next page">';
         $config['last_tag_close'] 	= '</li>';
 
-        $config['next_link'] 		= 'Selanjutnya &rarr;';
+        $config['next_link'] 		= '&rarr;';
         $config['next_tag_open'] 	= '<li class="next page">';
         $config['next_tag_close'] 	= '</li>';
 
-        $config['prev_link'] 		= '&larr; Sebelumnya';
+        $config['prev_link'] 		= '&larr;';
         $config['prev_tag_open'] 	= '<li class="prev page">';
         $config['prev_tag_close'] 	= '</li>';
 
@@ -186,7 +186,7 @@ class Berita extends CI_Controller {
 
         $config['num_tag_open'] 	= '<li class="page">';
         $config['num_tag_close'] 	= '</li>';
-		$config['per_page'] 		= 10;
+		$config['per_page'] 		= 5;
 		$config['first_url'] 		= base_url().'berita/kategori/'.$slug_kategori.'/';
 		$this->pagination->initialize($config); 
 		$page 		= ($this->uri->segment(5)) ? ($this->uri->segment(5) - 1) * $config['per_page'] : 0;

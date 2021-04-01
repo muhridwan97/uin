@@ -56,7 +56,7 @@ class Home extends CI_Controller {
 
         $config['num_tag_open'] 	= '<li class="page">';
         $config['num_tag_close'] 	= '</li>';
-		$config['per_page'] 		= 8;
+		$config['per_page'] 		= 4;
 		$config['first_url'] 		= base_url().'home/';
 		$this->pagination->initialize($config); 
 		$page 		= ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) * $config['per_page'] : 0;
